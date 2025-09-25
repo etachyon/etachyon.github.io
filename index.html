@@ -1,9 +1,285 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Arun | Java Backend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff; /* A nice blue, common in tech */
+            --secondary-color: #6c757d; /* Muted gray for secondary text */
+            --accent-color: #28a745;   /* Green for calls to action */
+            --background-light: #f8f9fa;
+            --background-dark: #343a40;
+            --text-light: #f8f9fa;
+            --text-dark: #343a40;
+            --card-background: #ffffff;
+            --border-color: #e9ecef;
+        }
 
-<title>Home</title>  
-  
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            margin: 0;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        header h1::after {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex-grow: 1;
+        }
+
+        section {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            background-color: var(--background-light);
+            padding: 1rem 1.2rem;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--text-dark);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .project-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .project-item:last-child {
+            border-bottom: none;
+        }
+
+        .project-item h3 {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-item p {
+            margin-bottom: 0.8rem;
+        }
+
+        .project-item .tech-stack span {
+            display: inline-block;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            font-size: 0.8em;
+            padding: 0.4em 0.8em;
+            border-radius: 4px;
+            margin-right: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        footer {
+            background-color: var(--background-dark);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            .container {
+                margin: 1.5rem auto;
+                padding: 0 1rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
 <body>
-  <div> Hello, World!! </div>
-</body>
 
+<header>
+    <h1>Arun</h1>
+    <p>Experienced Java Backend Developer</p>
+</header>
+
+<div class="container">
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            As a passionate Java Backend Developer, I specialize in building robust, scalable, and high-performance server-side applications. With expertise in Spring Boot, microservices architecture, and database management, I thrive on solving complex problems and delivering efficient solutions that power critical business functions. I am dedicated to writing clean, maintainable code and continuously learning new technologies to stay at the forefront of backend development.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">Java</div>
+            <div class="skill-item">Spring Boot</div>
+            <div class="skill-item">Microservices</div>
+            <div class="skill-item">RESTful APIs</div>
+            <div class="skill-item">Hibernate / JPA</div>
+            <div class="skill-item">SQL (PostgreSQL, MySQL)</div>
+            <div class="skill-item">NoSQL (MongoDB, Redis)</div>
+            <div class="skill-item">Docker</div>
+            <div class="skill-item">Kubernetes (Basics)</div>
+            <div class="skill-item">Kafka / RabbitMQ</div>
+            <div class="skill-item">Git</div>
+            <div class="skill-item">CI/CD</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-item">
+            <h3>E-commerce Microservices Platform</h3>
+            <p>Designed and developed a scalable e-commerce backend using Spring Boot, Spring Cloud, and Eureka for service discovery. Implemented secure RESTful APIs for product catalog, order processing, and user management.</p>
+            <div class="tech-stack">
+                <span>Java 17</span><span>Spring Boot</span><span>Spring Cloud</span><span>PostgreSQL</span><span>Kafka</span><span>Docker</span>
+            </div>
+        </div>
+        <div class="project-item">
+            <h3>Real-time Chat Application Backend</h3>
+            <p>Built a high-throughput backend for a real-time chat application using Spring WebFlux and WebSocket. Leveraged Redis for session management and message caching to ensure low-latency communication.</p>
+            <div class="tech-stack">
+                <span>Java 11</span><span>Spring WebFlux</span><span>WebSocket</span><span>Redis</span><span>MongoDB</span>
+            </div>
+        </div>
+        <div class="project-item">
+            <h3>API Gateway & Authentication Service</h3>
+            <p>Implemented an API Gateway with Spring Cloud Gateway and a JWT-based authentication service. Focused on security, rate limiting, and centralized logging for multiple microservices.</p>
+            <div class="tech-stack">
+                <span>Java</span><span>Spring Security</span><span>JWT</span><span>Spring Cloud Gateway</span><span>OAuth2</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <p>
+            I'm always open to new opportunities and collaborations. Feel free to connect with me!
+        </p>
+        <a href="mailto:arunpr@proton.me" class="btn">Email Me</a>
+        <a href="https://linkedin.com/in/arunprtn" target="_blank" class="btn" style="background-color: #0077B5; margin-left: 15px;">LinkedIn</a>
+        <a href="https://github.com/etachyon" target="_blank" class="btn" style="background-color: #333; margin-left: 15px;">GitHub</a>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 Arun. All rights reserved.</p>
+    <p>
+        <a href="#about">About</a> |
+        <a href="#skills">Skills</a> |
+        <a href="#projects">Projects</a> |
+        <a href="#contact">Contact</a>
+    </p>
+</footer>
+
+</body>
 </html>
